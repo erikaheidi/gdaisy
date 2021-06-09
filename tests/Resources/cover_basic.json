@@ -1,0 +1,47 @@
+{
+  "width": 800,
+  "height": 418,
+  "background": "FFFFFF",
+  "elements": {
+    "title": {
+      "type": "text",
+      "properties": {
+        "pos_x": 20,
+        "pos_y": 40,
+        "size": 30,
+        "color": "000000",
+        "max_width": 500,
+        "font": "resources/fonts/OpenSans-Bold.ttf"
+      }
+    },
+    "description": {
+      "type": "text",
+      "properties": {
+        "pos_x": 20,
+        "pos_y": 180,
+        "size": 20,
+        "color": "666666",
+        "max_width": 500
+      }
+    },
+    "author": {
+      "type": "image",
+      "properties": {
+        "pos_x": 600,
+        "pos_y": 100,
+        "width": 150,
+        "height": 150
+      }
+    },
+    "cover":  {
+      "type": "image",
+      "properties": {
+        "width": 1500,
+        "height": 500,
+        "pos_x": 0,
+        "pos_y": 0,
+        "image": "cover_basic.png"
+      }
+    }
+  }
+}

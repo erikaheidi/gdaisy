@@ -1,0 +1,23 @@
+{
+    "name": "erikaheidi/gdaisy",
+    "description": "php-gd utils",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "GDaisy\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.4",
+        "ext-gd": "*",
+        "ext-json": "*",
+        "minicli/minicli": "^2.2"
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.3"
+    },
+    "bin": [
+        "bin/gdaisy"
+    ]
+}

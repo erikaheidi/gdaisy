@@ -1,0 +1,37 @@
+{
+  "width": 800,
+  "height": 418,
+  "background": "FFFFFF",
+  "elements": {
+    "title": {
+      "type": "text",
+      "properties": {
+        "pos_x": 20,
+        "pos_y": 40,
+        "size": 26,
+        "color": "000000",
+        "max_width": 550,
+        "font": "resources/fonts/OpenSans-Bold.ttf"
+      }
+    },
+    "description": {
+      "type": "text",
+      "properties": {
+        "pos_x": 18,
+        "pos_y": 180,
+        "size": 20,
+        "color": "666666",
+        "max_width": 550
+      }
+    },
+    "thumbnail": {
+      "type": "image",
+      "properties": {
+        "pos_x": 610,
+        "pos_y": 100,
+        "width": 150,
+        "height": 150
+      }
+    }
+  }
+}

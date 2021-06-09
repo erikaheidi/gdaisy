@@ -1,0 +1,79 @@
+#!/usr/bin/php
+<?php
+
+if (php_sapi_name() !== 'cli') {
+    exit;
+}
+
+use Minicli\App;
+use GDaisy\Template;
+use GDaisy\Util;
+use Minicli\Command\CommandCall;
+use Minicli\Exception\CommandNotFoundException;
+
+$root_app = dirname(__DIR__);
+
+if (!is_file($root_app . '/vendor/autoload.php')) {
+    $root_app = dirname(__DIR__, 4);
+}
+
+require $root_app . '/vendor/autoload.php';
+
+$gdaisy = new App([
+    'app_debug' => true,
+    'default_template' => $root_app . '/resources/templates/article_preview.json',
+]);
+
+$input = new CommandCall($argv);
+
+/**
+ * Example command that generates a cover based on meta tags.
+ */
+$gdaisy->registerCommand('generate', function() use ($gdaisy, $input) {
+    $template_file = $gdaisy->config->default_template;
+
+    if ($input->hasParam('template')) {
+        $template_file = $input->getParam('template');
+    }
+
+    if (!is_file($template_file)) {
+        $gdaisy->getPrinter()->error("Template not found.");
+        return 1;
+    }
+
+    if (!isset($input->args[2])) {
+        $gdaisy->getPrinter()->error("You must provide the URL as second parameter.");
+        return 1;
+    }
+
+    if (!isset($input->args[3])) {
+        $gdaisy->getPrinter()->error("You must provide the Output location as third parameter.");
+        return 1;
+    }
+
+    $template = Template::create($template_file);
+
+    $url = $input->args[2];
+    $dest = $input->args[3];
+    $tags = get_meta_tags($url);
+
+    $elements = [
+        'title' => [ "text" => html_entity_decode($tags['twitter:title'], ENT_QUOTES) ],
+        'description' => [ "text" => html_entity_decode($tags['twitter:description'], ENT_QUOTES) . "..." ],
+        'thumbnail' => [ "image_file" => Util::downloadImage($tags['twitter:image'] ?? $tags['twitter:image:src'])]
+    ];
+
+    $template->build($elements);
+    $template->write($dest);
+    $gdaisy->getPrinter()->info("Image saved to $dest.");
+
+    return 0;
+});
+
+try {
+    $gdaisy->runCommand($argv);
+    return 0;
+} catch (CommandNotFoundException $e) {
+    $gdaisy->getPrinter()->error("Command not found.");
+    return 1;
+}
