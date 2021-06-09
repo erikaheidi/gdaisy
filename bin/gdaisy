@@ -68,7 +68,7 @@ $gdaisy->registerCommand('generate', function() use ($gdaisy, $input) {
     $description = $tags['twitter:description'] ?? $tags['description'] ?? 'Generated with erikaheidi/gdaisy';
     $elements = [
         'title' => [ "text" => html_entity_decode($title, ENT_QUOTES) ],
-        'description' => [ "text" => html_entity_decode($description, ENT_QUOTES) ],
+        'description' => [ "text" => html_entity_decode($description . '...', ENT_QUOTES) ],
         'thumbnail' => [ "image_file" => $image_file]
     ];
 
