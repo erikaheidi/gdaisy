@@ -21,7 +21,7 @@ require $root_app . '/vendor/autoload.php';
 
 $gdaisy = new App([
     'app_debug' => true,
-    'default_template' => $root_app . '/resources/templates/article_preview.json',
+    'default_template' => __DIR__ . '/../resources/templates/article_preview.json',
 ]);
 
 $input = new CommandCall($argv);
@@ -55,12 +55,21 @@ $gdaisy->registerCommand('generate', function() use ($gdaisy, $input) {
 
     $url = $input->args[2];
     $dest = $input->args[3];
+
     $tags = get_meta_tags($url);
 
+    $image_file = __DIR__ . '/../resources/images/gdaisy.png';
+    $image_url = $tags['twitter:image'] ?? $tags['twitter:image:src'] ?? null;
+    if ($image_url) {
+        $image_file = Util::downloadImage($image_url);
+    }
+
+    $title = $tags['twitter:title'] ?? get_page_title($url) ?? 'Gdaisy';
+    $description = $tags['twitter:description'] ?? $tags['description'] ?? 'Generated with erikaheidi/gdaisy';
     $elements = [
-        'title' => [ "text" => html_entity_decode($tags['twitter:title'], ENT_QUOTES) ],
-        'description' => [ "text" => html_entity_decode($tags['twitter:description'], ENT_QUOTES) . "..." ],
-        'thumbnail' => [ "image_file" => Util::downloadImage($tags['twitter:image'] ?? $tags['twitter:image:src'])]
+        'title' => [ "text" => html_entity_decode($title, ENT_QUOTES) ],
+        'description' => [ "text" => html_entity_decode($description, ENT_QUOTES) ],
+        'thumbnail' => [ "image_file" => $image_file]
     ];
 
     $template->build($elements);
@@ -76,4 +85,17 @@ try {
 } catch (CommandNotFoundException $e) {
     $gdaisy->getPrinter()->error("Command not found.");
     return 1;
+}
+
+function get_page_title(string $url) {
+    $dom = new \DOMDocument();
+
+    if(@$dom->loadHTMLFile($url)) {
+        $list = $dom->getElementsByTagName("title");
+        if ($list->length > 0) {
+            return $list->item(0)->textContent;
+        }
+    }
+
+    return null;
 }
