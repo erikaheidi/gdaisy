@@ -71,7 +71,7 @@ class Template
         imagepng($this->getResource(), $path);
     }
 
-    public function apply(string $key, array $params = [])
+    public function apply(string $key, array $params = []): Template
     {
         /** @var PlaceholderInterface $placeholder */
         $placeholder = $this->getPlaceholder($key);
@@ -79,6 +79,8 @@ class Template
         if ($placeholder) {
             $placeholder->apply($this->getResource(), $params);
         }
+
+        return $this;
     }
 
     public function getResource()

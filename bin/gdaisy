@@ -66,13 +66,15 @@ $gdaisy->registerCommand('generate', function() use ($gdaisy, $input) {
 
     $title = $tags['twitter:title'] ?? get_page_title($url) ?? 'Gdaisy';
     $description = $tags['twitter:description'] ?? $tags['description'] ?? 'Generated with erikaheidi/gdaisy';
-    $elements = [
-        'title' => [ "text" => html_entity_decode($title, ENT_QUOTES) ],
-        'description' => [ "text" => html_entity_decode($description . '...', ENT_QUOTES) ],
-        'thumbnail' => [ "image_file" => $image_file]
-    ];
 
-    $template->build($elements);
+    $template->apply("title", [
+        "text" => html_entity_decode($title, ENT_QUOTES)
+    ])->apply("description", [
+        "text" => html_entity_decode($description . '...', ENT_QUOTES)
+    ])->apply("thumbnail", [
+        "image_file" => $image_file
+    ]);
+
     $template->write($dest);
     $gdaisy->getPrinter()->info("Image saved to $dest.");
 

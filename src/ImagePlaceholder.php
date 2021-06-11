@@ -52,6 +52,11 @@ class ImagePlaceholder implements PlaceholderInterface
                     $copy_x = ($original_w / 2) - ($this->width / 2);
                     $copy_y = ($original_h / 2) - ($this->height / 2);
                 }
+
+                if ($this->crop === "right") {
+                    $copy_x = $this->width - $original_w;
+                    $copy_y = $this->height - $original_h;
+                }
             }
 
             imagecopyresized(
