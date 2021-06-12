@@ -10,7 +10,7 @@ it('creates template', function () {
     expect($template->name)->toEqual("gdaisy");
 });
 
-it('creates placeholder and stores coordinates', function () {
+it('adds placeholder and stores coordinates', function () {
     $params = [
         'width' => 100,
         'height' => 100,

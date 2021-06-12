@@ -20,3 +20,16 @@ it('creates placeholder and stores coordinates', function () {
     expect($placeholder->pos_y)->toEqual(0);
     expect($placeholder->image)->toEqual("test.jpg");
 });
+
+it('sets default values when not provided', function () {
+
+    $params = [
+        'width' => 100,
+        'height' => 100,
+        'pos_x' => 0,
+        'pos_y' => 0,
+    ];
+
+    $placeholder = new ImagePlaceholder($params);
+    expect($placeholder->crop)->toEqual("left");
+});
