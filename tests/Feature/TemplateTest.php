@@ -25,19 +25,19 @@ it('adds placeholder and stores coordinates', function () {
 
     expect($template->placeholders)->toHaveCount(1);
 
-    $tpl_placeholder = $template->getPlaceholder("test-key");
-    expect($tpl_placeholder->width)->toEqual(100);
-    expect($tpl_placeholder->height)->toEqual(100);
-    expect($tpl_placeholder->pos_x)->toEqual(0);
-    expect($tpl_placeholder->pos_y)->toEqual(0);
-    expect($tpl_placeholder->image)->toEqual("test.jpg");
+    expect($template->getPlaceholder("test-key"))
+        ->width->toEqual(100)
+        ->height->toEqual(100)
+        ->pos_x->toEqual(0)
+        ->pos_y->toEqual(0)
+        ->image->toEqual("test.jpg");
 });
 
 it('loads json templates', function () {
     $template = Template::create(__DIR__ . '/../../tests/Resources/cover_basic.json');
 
-    $tpl_placeholder = $template->getPlaceholder("author");
-    expect($tpl_placeholder->width)->toEqual(150);
-    expect($tpl_placeholder->height)->toEqual(150);
-    expect($tpl_placeholder->image)->toBeNull();
+    expect($template->getPlaceholder("author"))
+        ->width->toEqual(150)
+        ->height->toEqual(150)
+        ->image->toBeNull();
 });

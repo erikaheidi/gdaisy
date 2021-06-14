@@ -12,13 +12,12 @@ it('creates placeholder and stores coordinates', function () {
         'image' => "test.jpg",
     ];
 
-    $placeholder = new ImagePlaceholder($params);
-
-    expect($placeholder->width)->toEqual(100);
-    expect($placeholder->height)->toEqual(100);
-    expect($placeholder->pos_x)->toEqual(0);
-    expect($placeholder->pos_y)->toEqual(0);
-    expect($placeholder->image)->toEqual("test.jpg");
+    expect(new ImagePlaceholder($params))
+        ->width->toEqual(100)
+        ->height->toEqual(100)
+        ->pos_x->toEqual(0)
+        ->pos_y->toEqual(0)
+        ->image->toEqual("test.jpg");
 });
 
 it('sets default values when not provided', function () {
@@ -30,6 +29,6 @@ it('sets default values when not provided', function () {
         'pos_y' => 0,
     ];
 
-    $placeholder = new ImagePlaceholder($params);
-    expect($placeholder->crop)->toEqual("left");
+    expect(new ImagePlaceholder($params))
+        ->crop->toEqual("left");
 });

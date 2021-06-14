@@ -11,12 +11,11 @@ it('creates text placeholder and stores coordinates ', function () {
         'color' => '000000'
     ];
 
-    $placeholder = new TextPlaceholder($params);
-
-    expect($placeholder->pos_x)->toEqual(0);
-    expect($placeholder->pos_y)->toEqual(0);
-    expect($placeholder->size)->toEqual(30);
-    expect($placeholder->color)->toEqual('000000');
+    expect(new TextPlaceholder($params))
+        ->pos_x->toEqual(0)
+        ->pos_y->toEqual(0)
+        ->size->toEqual(30)
+        ->color->toEqual('000000');
 });
 
 it('sets up default values when not provided', function () {

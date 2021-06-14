@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9dfae2dd8ae0f327fb0663faeb0aa3c",
+    "content-hash": "ba8b6906c6e02818aa301e7775ce39b5",
     "packages": [
         {
             "name": "minicli/minicli",
@@ -457,23 +457,23 @@
         },
         {
             "name": "pestphp/pest",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest.git",
-                "reference": "bb13bdaa80a909226c8948b00bf2f5c32cf8761b"
+                "reference": "dd2921fd26fa02673077d5b75b8756a6f5adcdbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest/zipball/bb13bdaa80a909226c8948b00bf2f5c32cf8761b",
-                "reference": "bb13bdaa80a909226c8948b00bf2f5c32cf8761b",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/dd2921fd26fa02673077d5b75b8756a6f5adcdbc",
+                "reference": "dd2921fd26fa02673077d5b75b8756a6f5adcdbc",
                 "shasum": ""
             },
             "require": {
                 "nunomaduro/collision": "^5.0",
                 "pestphp/pest-plugin": "^1.0",
                 "pestphp/pest-plugin-coverage": "^1.0",
-                "pestphp/pest-plugin-expectations": "^1.3",
+                "pestphp/pest-plugin-expectations": "^1.6",
                 "pestphp/pest-plugin-init": "^1.1",
                 "php": "^7.3 || ^8.0",
                 "phpunit/phpunit": ">= 9.3.7 <= 9.5.5"
@@ -533,7 +533,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pestphp/pest/issues",
-                "source": "https://github.com/pestphp/pest/tree/v1.3.1"
+                "source": "https://github.com/pestphp/pest/tree/v1.4.0"
             },
             "funding": [
                 {
@@ -561,7 +561,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-06-06T00:07:27+00:00"
+            "time": "2021-06-10T18:26:42+00:00"
         },
         {
             "name": "pestphp/pest-plugin",
@@ -713,16 +713,16 @@
         },
         {
             "name": "pestphp/pest-plugin-expectations",
-            "version": "v1.4.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest-plugin-expectations.git",
-                "reference": "fd313336450fdff2053ff989790aa3fe64b2df32"
+                "reference": "efc39fb844f26e5f1d0f14784e06c8153c57d78f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest-plugin-expectations/zipball/fd313336450fdff2053ff989790aa3fe64b2df32",
-                "reference": "fd313336450fdff2053ff989790aa3fe64b2df32",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin-expectations/zipball/efc39fb844f26e5f1d0f14784e06c8153c57d78f",
+                "reference": "efc39fb844f26e5f1d0f14784e06c8153c57d78f",
                 "shasum": ""
             },
             "require": {
@@ -765,7 +765,7 @@
                 "unit"
             ],
             "support": {
-                "source": "https://github.com/pestphp/pest-plugin-expectations/tree/v1.4.0"
+                "source": "https://github.com/pestphp/pest-plugin-expectations/tree/v1.6.0"
             },
             "funding": [
                 {
@@ -781,7 +781,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-06-04T19:16:27+00:00"
+            "time": "2021-06-10T17:37:27+00:00"
         },
         {
             "name": "pestphp/pest-plugin-init",
@@ -2219,16 +2219,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "5.0.2",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "a90ccbddffa067b51f574dea6eb25d5680839455"
+                "reference": "23bd5951f7ff26f12d4e3242864df3e08dec4e49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/a90ccbddffa067b51f574dea6eb25d5680839455",
-                "reference": "a90ccbddffa067b51f574dea6eb25d5680839455",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/23bd5951f7ff26f12d4e3242864df3e08dec4e49",
+                "reference": "23bd5951f7ff26f12d4e3242864df3e08dec4e49",
                 "shasum": ""
             },
             "require": {
@@ -2271,7 +2271,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.2"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.3"
             },
             "funding": [
                 {
@@ -2279,7 +2279,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T15:55:19+00:00"
+            "time": "2021-06-11T13:31:12+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -3610,5 +3610,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
