@@ -1,0 +1,26 @@
+{
+  "width": 600,
+  "height": 600,
+  "background": "FFFFFF",
+  "elements": {
+    "title": {
+      "type": "text",
+      "properties": {
+        "pos_x": 0,
+        "pos_y": 20,
+        "size": 30,
+        "color": "666666",
+        "align": "center"
+      }
+    },
+    "thumbnail": {
+      "type": "image",
+      "properties": {
+        "pos_x": 50,
+        "pos_y": 50,
+        "width": 500,
+        "height": 500
+      }
+    }
+  }
+}

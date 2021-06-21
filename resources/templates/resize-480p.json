@@ -1,0 +1,16 @@
+{
+  "width": 640,
+  "height": 480,
+  "background": "FFFFFF",
+  "elements": {
+    "thumbnail": {
+      "type": "image",
+      "properties": {
+        "pos_x": 0,
+        "pos_y": 0,
+        "width": 640,
+        "height": 480
+      }
+    }
+  }
+}

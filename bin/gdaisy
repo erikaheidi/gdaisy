@@ -6,9 +6,6 @@ if (php_sapi_name() !== 'cli') {
 }
 
 use Minicli\App;
-use GDaisy\Template;
-use GDaisy\Util;
-use Minicli\Command\CommandCall;
 use Minicli\Exception\CommandNotFoundException;
 
 $root_app = dirname(__DIR__);
@@ -20,66 +17,26 @@ if (!is_file($root_app . '/vendor/autoload.php')) {
 require $root_app . '/vendor/autoload.php';
 
 $gdaisy = new App([
-    'app_debug' => true,
-    'default_template' => __DIR__ . '/../resources/templates/article_preview.json',
+    'app_debug' => false,
+    'app_path' => __DIR__ . '/command',
+    'default_template' => __DIR__ . '/../resources/templates/cover-default.json',
 ]);
 
-$input = new CommandCall($argv);
-
-/**
- * Example command that generates a cover based on meta tags.
- */
-$gdaisy->registerCommand('generate', function() use ($gdaisy, $input) {
-    $template_file = $gdaisy->config->default_template;
-
-    if ($input->hasParam('template')) {
-        $template_file = $input->getParam('template');
-    }
-
-    if (!is_file($template_file)) {
-        $gdaisy->getPrinter()->error("Template not found.");
-        return 1;
-    }
-
-    if (!isset($input->args[2])) {
-        $gdaisy->getPrinter()->error("You must provide the URL as second parameter.");
-        return 1;
-    }
-
-    if (!isset($input->args[3])) {
-        $gdaisy->getPrinter()->error("You must provide the Output location as third parameter.");
-        return 1;
-    }
-
-    $template = Template::create($template_file);
-
-    $url = $input->args[2];
-    $dest = $input->args[3];
-
-    $tags = get_meta_tags($url);
-
-    $image_file = __DIR__ . '/../resources/images/gdaisy.png';
-    $image_url = $tags['twitter:image'] ?? $tags['twitter:image:src'] ?? null;
-    if ($image_url) {
-        $image_file = Util::downloadImage($image_url);
-    }
-
-    $title = $tags['twitter:title'] ?? get_page_title($url) ?? 'Gdaisy';
-    $description = $tags['twitter:description'] ?? $tags['description'] ?? 'Generated with erikaheidi/gdaisy';
-
-    $template->apply("title", [
-        "text" => html_entity_decode($title, ENT_QUOTES)
-    ])->apply("description", [
-        "text" => html_entity_decode($description . '...', ENT_QUOTES)
-    ])->apply("thumbnail", [
-        "image_file" => $image_file
-    ]);
-
-    $template->write($dest);
-    $gdaisy->getPrinter()->info("Image saved to $dest.");
-
-    return 0;
-});
+$signature = <<<EOD
+  .-_'''-.    ______        ____    .-./`)    .-'''-.    ____     __  
+ '_( )_   \  |    _ `''.  .'  __ `. \ .-.')  / _     \   \   \   /  / 
+|(_ o _)|  ' | _ | ) _  \/   '  \  \/ `-' \ (`' )/`--'    \  _. /  '  
+. (_,_)/___| |( ''_'  ) ||___|  /  | `-'`"`(_ o _).        _( )_ .'   
+|  |  .-----.| . (_) `. |   _.-`   | .---.  (_,_). '.  ___(_ o _)'    
+'  \  '-   .'|(_    ._) '.'   _    | |   | .---.  \  :|   |(_,_)'     
+ \  `-'`   | |  (_.\.' / |  _( )_  | |   | \    `-'  ||   `-'  /      
+  \        / |       .'  \ (_ o _) / |   |  \       /  \      /       
+   `'-...-'  '-----'`     '.(_,_).'  '---'   `-...-'    `-..-'  
+                  
+                  ./vendor/bin/gdaisy help
+                  
+EOD;
+$gdaisy->setSignature($signature);
 
 try {
     $gdaisy->runCommand($argv);
@@ -87,17 +44,4 @@ try {
 } catch (CommandNotFoundException $e) {
     $gdaisy->getPrinter()->error("Command not found.");
     return 1;
-}
-
-function get_page_title(string $url) {
-    $dom = new \DOMDocument();
-
-    if(@$dom->loadHTMLFile($url)) {
-        $list = $dom->getElementsByTagName("title");
-        if ($list->length > 0) {
-            return $list->item(0)->textContent;
-        }
-    }
-
-    return null;
 }

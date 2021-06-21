@@ -8,13 +8,15 @@ class Template
     public int $width;
     public int $height;
     public string $background;
-    public array $sources;
     public array $placeholders = [];
     protected $resource;
 
-    public function __construct(string $name)
+    public function __construct(string $name, array $settings = [])
     {
         $this->name = $name;
+        $this->width = $settings['width'] ?? 100;
+        $this->height = $settings['height'] ?? 100;
+        $this->background = $settings['background'] ?? "000000";
     }
 
     static function create(string $filename): Template

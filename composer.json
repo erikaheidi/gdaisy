@@ -1,11 +1,12 @@
 {
     "name": "erikaheidi/gdaisy",
-    "description": "php-gd utils",
+    "description": "php-gd templating system",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "GDaisy\\": "src/"
+            "GDaisy\\": "src/",
+            "GDaisy\\Command\\": "bin/command"
         }
     },
     "require": {

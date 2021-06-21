@@ -18,10 +18,10 @@ class ImagePlaceholder implements PlaceholderInterface
 
     public function __construct(array $params = [])
     {
-        $this->width = $params['width'];
-        $this->height = $params['height'];
-        $this->pos_x = $params['pos_x'];
-        $this->pos_y = $params['pos_y'];
+        $this->width = $params['width'] ?? 100;
+        $this->height = $params['height'] ?? 100;
+        $this->pos_x = $params['pos_x'] ?? 0;
+        $this->pos_y = $params['pos_y'] ?? 0;
         $this->image = $params['image'] ?? null;
         $this->crop = $params['crop'] ?? "left";
     }

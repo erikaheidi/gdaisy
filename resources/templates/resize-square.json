@@ -1,0 +1,16 @@
+{
+  "width": 800,
+  "height": 800,
+  "background": "FFFFFF",
+  "elements": {
+    "thumbnail": {
+      "type": "image",
+      "properties": {
+        "pos_x": 0,
+        "pos_y": 0,
+        "width": 800,
+        "height": 800
+      }
+    }
+  }
+}
