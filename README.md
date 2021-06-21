@@ -20,7 +20,7 @@ composer require erikaheidi/gdaisy
 Gdaisy comes with an example script that generates a header image adequately sized for Twitter, based on a default template. The `vendor/bin/gdaisy generate` script expects the URL to fetch as first parameter and the output path as second parameter, as follows:
 
 ```shell
-./vendor/bin/gdaisy generate https://www.digitalocean.com/community/tutorials/how-to-set-up-visual-studio-code-for-php-projects output.png
+./vendor/bin/gdaisy generate cover https://www.digitalocean.com/community/tutorials/how-to-set-up-visual-studio-code-for-php-projects output.png
 ```
 
 This will generate the following image:
