@@ -1,6 +1,9 @@
 <?php
 
-namespace GDaisy;
+namespace GDaisy\Placeholder;
+
+use GDaisy\PlaceholderInterface;
+use GDaisy\Util;
 
 class TextPlaceholder implements PlaceholderInterface
 {
@@ -26,7 +29,7 @@ class TextPlaceholder implements PlaceholderInterface
         $this->pos_x = $params['pos_x'] ?? 0;
         $this->pos_y = $params['pos_y'] ?? $this->size;
         $font = $params['font'] ?? 'resources/fonts/OpenSans-Regular.ttf';
-        $this->font = __DIR__ . '/../' . $font;
+        $this->font = __DIR__ . '/../../' . $font;
         $this->color = $params['color'] ?? "000000";
         $this->max_width = $params['max_width'] ?? null;
         $this->align = $params['align'] ?? 'left';

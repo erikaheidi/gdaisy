@@ -1,6 +1,9 @@
 <?php
 
-namespace GDaisy;
+namespace GDaisy\Placeholder;
+
+use GDaisy\PlaceholderInterface;
+use GDaisy\FilterInterface;
 
 class ImagePlaceholder implements PlaceholderInterface
 {
@@ -16,6 +19,8 @@ class ImagePlaceholder implements PlaceholderInterface
 
     public string $crop;
 
+    public ?array $filters;
+
     public function __construct(array $params = [])
     {
         $this->width = $params['width'] ?? 100;
@@ -24,6 +29,7 @@ class ImagePlaceholder implements PlaceholderInterface
         $this->pos_y = $params['pos_y'] ?? 0;
         $this->image = $params['image'] ?? null;
         $this->crop = $params['crop'] ?? "left";
+        $this->filters = $params['filters'] ?? [];
     }
 
     public function apply($resource, array $params = [])
@@ -59,9 +65,18 @@ class ImagePlaceholder implements PlaceholderInterface
                 }
             }
 
+            $crop = imagecrop($stamp, [ 'x' => $copy_x, 'y' => $copy_y, 'width' => $copy_w, 'height' => $copy_h]);
+
+            //apply filters
+            foreach ($this->filters as $filter_class) {
+                /** @var FilterInterface $filter */
+                $filter = new $filter_class();
+                $crop = $filter->apply($crop);
+            }
+
             imagecopyresized(
                 $resource,
-                $stamp,
+                $crop,
                 $this->pos_x,
                 $this->pos_y,
                 $copy_x,

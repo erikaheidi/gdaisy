@@ -2,6 +2,9 @@
 
 namespace GDaisy;
 
+use GDaisy\Placeholder\ImagePlaceholder;
+use GDaisy\Placeholder\TextPlaceholder;
+
 class Template
 {
     public string $name;
