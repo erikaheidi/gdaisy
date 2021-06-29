@@ -1,6 +1,6 @@
 <?php
 
-use GDaisy\ImagePlaceholder;
+use GDaisy\Placeholder\ImagePlaceholder;
 
 it('creates placeholder and stores coordinates', function () {
 

@@ -1,6 +1,6 @@
 <?php
 
-use GDaisy\TextPlaceholder;
+use GDaisy\Placeholder\TextPlaceholder;
 
 it('creates text placeholder and stores coordinates ', function () {
 

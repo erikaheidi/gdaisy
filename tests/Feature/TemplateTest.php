@@ -1,6 +1,6 @@
 <?php
 
-use GDaisy\ImagePlaceholder;
+use GDaisy\Placeholder\ImagePlaceholder;
 use GDaisy\Template;
 
 it('creates template', function () {
