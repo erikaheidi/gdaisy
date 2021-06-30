@@ -46,6 +46,7 @@ class Mask
 
             $this->color = imagecolorallocatealpha($this->mask, 255, 0, 255, 127);
             $this->bg_color = Util::getColor($this->mask,'00b140');
+            imagefill($this->mask, 0, 0, $this->bg_color);
         }
 
         return $this->mask;
@@ -64,7 +65,6 @@ class Mask
     {
         $mask = $this->getMaskResource();
 
-        imagefill($mask, 0, 0, $this->bg_color);
         imagefilledellipse($mask, $this->width / 2, $this->height / 2, $this->width, $this->height, $this->color);
         imagecolortransparent($mask, $this->color);
 
