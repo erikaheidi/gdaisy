@@ -34,7 +34,7 @@ class ImagePlaceholder implements PlaceholderInterface
 
     public function apply($resource, array $params = [])
     {
-        if (is_resource($resource) && is_file($params['image_file'])) {
+        if ((is_resource($resource) || $resource instanceOf \GdImage) && is_file($params['image_file'])) {
             $stamp = $this->getImageResource($params['image_file']);
             $info = getimagesize($params['image_file']);
 
