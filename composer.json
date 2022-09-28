@@ -10,7 +10,7 @@
         }
     },
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.1",
         "ext-gd": "*",
         "ext-json": "*",
         "minicli/minicli": "^2.2"
@@ -20,5 +20,10 @@
     },
     "bin": [
         "bin/gdaisy"
-    ]
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
 }
