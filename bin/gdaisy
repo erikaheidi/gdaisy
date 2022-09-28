@@ -40,8 +40,13 @@ $gdaisy->setSignature($signature);
 
 try {
     $gdaisy->runCommand($argv);
-    return 0;
-} catch (CommandNotFoundException $e) {
-    $gdaisy->getPrinter()->error("Command not found.");
+} catch (CommandNotFoundException $notFoundException) {
+    $gdaisy->getPrinter()->error("Command Not Found.");
+    return 1;
+} catch (Exception $exception) {
+    if ($gdaisy->config->debug) {
+        $gdaisy->getPrinter()->error("An error occurred:");
+        $gdaisy->getPrinter()->error($exception->getMessage());
+    }
     return 1;
 }

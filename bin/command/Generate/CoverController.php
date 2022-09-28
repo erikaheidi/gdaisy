@@ -8,7 +8,10 @@ use GDaisy\Util;
 
 class CoverController extends CommandController
 {
-    public function handle()
+    /**
+     * @throws \Exception
+     */
+    public function handle(): void
     {
         $template_file = $this->getApp()->config->default_template;
 
@@ -17,18 +20,15 @@ class CoverController extends CommandController
         }
 
         if (!is_file($template_file)) {
-            $this->getPrinter()->error("Template not found.");
-            return 1;
+            throw new \Exception("Template file not found.");
         }
 
         if (!isset($this->getArgs()[3])) {
-            $this->getPrinter()->error("You must provide the URL as second parameter.");
-            return 1;
+            throw new \Exception("You must provide the URL as second parameter.");
         }
 
         if (!isset($this->getArgs()[4])) {
-            $this->getPrinter()->error("You must provide the Output location as third parameter.");
-            return 1;
+            throw new \Exception("You must provide the Output location as third parameter.");
         }
 
         $template = Template::create($template_file);
@@ -57,8 +57,6 @@ class CoverController extends CommandController
 
         $template->write($dest);
         $this->getPrinter()->info("Image saved to $dest.");
-
-        return 0;
     }
 
     function get_page_title(string $url) {
