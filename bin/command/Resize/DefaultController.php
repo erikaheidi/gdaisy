@@ -6,7 +6,7 @@ use Minicli\Command\CommandController;
 
 class DefaultController extends CommandController
 {
-    public function handle()
+    public function handle(): void
     {
         $this->getPrinter()->out("To create a cropped thumbnail:");
         $this->getPrinter()->info("gdaisy resize crop size=[format] input=[input-path] output=[output-path]");

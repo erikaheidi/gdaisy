@@ -4,37 +4,34 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09b1782ba08db51a1a93e70715fc41cc",
+    "content-hash": "331f064eaf6787b29a9bb12ba9e17f22",
     "packages": [
         {
             "name": "minicli/minicli",
-            "version": "2.2.2",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/minicli/minicli.git",
-                "reference": "7a136614949b47d716769a037a1107e414bc4f38"
+                "reference": "2d31b303461d0ec1f8c6d0be00f8b26be8766fbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minicli/minicli/zipball/7a136614949b47d716769a037a1107e414bc4f38",
-                "reference": "7a136614949b47d716769a037a1107e414bc4f38",
+                "url": "https://api.github.com/repos/minicli/minicli/zipball/2d31b303461d0ec1f8c6d0be00f8b26be8766fbe",
+                "reference": "2d31b303461d0ec1f8c6d0be00f8b26be8766fbe",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3"
+                "ext-readline": "*",
+                "php": ">=8"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16",
+                "friendsofphp/php-cs-fixer": "^3.5",
                 "pestphp/pest": "^1.0",
                 "phpunit/phpunit": "^9.0"
-            },
-            "suggest": {
-                "ext-readline": "For obtaining user input"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Assets\\": "tests/Assets",
                     "Minicli\\": "src/"
                 }
             },
@@ -50,7 +47,7 @@
             ],
             "support": {
                 "issues": "https://github.com/minicli/minicli/issues",
-                "source": "https://github.com/minicli/minicli/tree/2.2.2"
+                "source": "https://github.com/minicli/minicli/tree/3.2.1"
             },
             "funding": [
                 {
@@ -58,7 +55,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-30T07:30:03+00:00"
+            "time": "2022-09-23T09:04:22+00:00"
         }
     ],
     "packages-dev": [
